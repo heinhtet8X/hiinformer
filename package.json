@@ -1,6 +1,7 @@
 {
   "name": "hnotify",
   "version": "1.0.0",
+  "description": "Easy-to-use, non-intrusive toast notifications for your application.",
   "main": "dist/index.cjs",
   "module": "dist/index.mjs",
   "types": "dist/index.d.ts",
@@ -16,7 +17,17 @@
   "files": [
     "dist"
   ],
-  "keywords": [],
+  "keywords": [
+    "toast notification",
+    "alert message",
+    "user feedback",
+    "popup",
+    "dismissable",
+    "non-intrusive",
+    "system messages",
+    "ui component",
+    "customizable"
+  ],
   "author": "Hein Htet Aung",
   "license": "MIT",
   "devDependencies": {
