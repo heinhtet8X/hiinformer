@@ -1,0 +1,40 @@
+# Dependencies
+/node_modules
+/jspm_packages/
+/pnpm-lock.yaml
+
+# Compiled/Build Artifacts
+/dist
+/build
+/out
+/es
+/lib
+/tmp
+/temp
+.next/           # For Next.js projects
+.nuxt/           # For Nuxt.js projects
+.svelte-kit/     # For SvelteKit projects
+/coverage/       # Test coverage reports
+
+# Logs and Documentation
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Environment and Configuration Files
+.env             # Local environment variables
+.env.development
+.env.production
+.DS_Store        # macOS system files
+Thumbs.db        # Windows system files
+
+# Editor and IDE Files
+.vscode/         # Visual Studio Code settings (if not shared)
+.idea/           # JetBrains IDE settings (WebStorm, IntelliJ)
+
+# TypeScript cache
+*.tsbuildinfo
+
+# Test files
+/test-results/
