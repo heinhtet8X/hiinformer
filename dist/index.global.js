@@ -100,7 +100,7 @@ var notify = (() => {
           );
         }
       } else {
-        if (toast.multiple && !toast.multiple) {
+        if (!toast.multiple) {
           toastMain.innerHTML = alertHtmlTags;
         } else {
           toastMain.insertAdjacentHTML("beforeend", alertHtmlTags);
