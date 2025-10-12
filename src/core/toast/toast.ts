@@ -6,12 +6,20 @@ export enum Status {
   Danger = "danger",
 }
 
+export type ToastStatus =
+  | Status
+  | "default"
+  | "success"
+  | "warning"
+  | "info"
+  | "danger";
+
 export type Toast = {
-  status: Status;
+  status?: ToastStatus;
   title: string;
   message: string;
-  timeout: number;
-  multiple: boolean;
+  timeout?: number | 3;
+  multiple?: boolean | true;
 };
 
 export const useToast = () => {
@@ -63,7 +71,7 @@ export const useToast = () => {
         );
       }
     } else {
-      if (toast.multiple && !toast.multiple) {
+      if (!toast.multiple) {
         toastMain.innerHTML = alertHtmlTags;
       } else {
         toastMain.insertAdjacentHTML("beforeend", alertHtmlTags);
@@ -117,7 +125,7 @@ export const useToast = () => {
     }
   };
 
-  const swithIcon = (status: Status): string => {
+  const swithIcon = (status: ToastStatus | undefined): string => {
     var icon;
     switch (status) {
       case "success":
