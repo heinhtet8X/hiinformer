@@ -5,15 +5,16 @@ declare enum Status {
     Info = "info",
     Danger = "danger"
 }
+type ToastStatus = Status | "default" | "success" | "warning" | "info" | "danger";
 type Toast = {
-    status: Status;
+    status?: ToastStatus;
     title: string;
     message: string;
-    timeout: number;
-    multiple: boolean;
+    timeout?: number | 3;
+    multiple?: boolean | true;
 };
 declare const useToast: () => {
     add: (toast: Toast) => void;
 };
 
-export { Status, type Toast, useToast };
+export { Status, type Toast, type ToastStatus, useToast };
