@@ -40,6 +40,7 @@ var __async = (__this, __arguments, generator) => {
 // src/index.ts
 var index_exports = {};
 __export(index_exports, {
+  Position: () => Position,
   Status: () => Status,
   useToast: () => useToast
 });
@@ -54,16 +55,27 @@ var Status = /* @__PURE__ */ ((Status2) => {
   Status2["Danger"] = "danger";
   return Status2;
 })(Status || {});
+var Position = /* @__PURE__ */ ((Position2) => {
+  Position2["TopStart"] = "top-start";
+  Position2["TopEnd"] = "top-end";
+  Position2["TopCenter"] = "top-center";
+  Position2["BottomStart"] = "bottom-start";
+  Position2["BottomEnd"] = "bottom-end";
+  Position2["BottomCenter"] = "bottom-center";
+  return Position2;
+})(Position || {});
+var count = 0;
 var useToast = () => {
-  let count = 0;
   const add = (toast) => {
-    var _a, _b;
+    var _a, _b, _c, _d;
     ++count;
     const toastMain = document.querySelector(".toast-main");
     const documentBody = document.querySelector("body");
     const timeout = (_a = toast.timeout) != null ? _a : 5;
     const toastId = `targetToast${count}`;
-    let toastAlertClass = (_b = toast.status) != null ? _b : "default";
+    const multiple = (_b = toast.multiple) != null ? _b : true;
+    const position = (_c = toast.position) != null ? _c : "top-end";
+    let toastAlertClass = (_d = toast.status) != null ? _d : "default";
     const icon = swithIcon(toast.status);
     const alertHtmlTags = `<div id="${toastId}" class="toast toast-${toastAlertClass} toast-container">
                 <div class="toast-body">
@@ -96,11 +108,14 @@ var useToast = () => {
       if (documentBody) {
         documentBody.insertAdjacentHTML(
           "beforeend",
-          `<div class="toast-main theme-default">${alertHtmlTags}</div>`
+          `<div class="toast-main toast-${position} theme-default">${alertHtmlTags}</div>`
         );
       }
     } else {
-      if (!toast.multiple) {
+      if (!multiple) {
+        if (!toastMain.classList.contains(`toast-${position}`)) {
+          toastMain.classList.add(`toast-${position}`);
+        }
         toastMain.innerHTML = alertHtmlTags;
       } else {
         toastMain.insertAdjacentHTML("beforeend", alertHtmlTags);
@@ -173,6 +188,7 @@ var useToast = () => {
 };
 // Annotate the CommonJS export names for ESM import in node:
 0 && (module.exports = {
+  Position,
   Status,
   useToast
 });

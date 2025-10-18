@@ -61,9 +61,11 @@
 
 @keyframes bumpUp {
   from {
-    top: 5px;
+    /* top: 5px; */
+    transform: translateY(30px);
   }
   to {
-    top: 0px;
+    /* top: 0px; */
+    transform: translateY(0px);
   }
 }

@@ -6,6 +6,15 @@ export enum Status {
   Danger = "danger",
 }
 
+export enum Position {
+  TopStart = "top-start",
+  TopEnd = "top-end",
+  TopCenter = "top-center",
+  BottomStart = "bottom-start",
+  BottomEnd = "bottom-end",
+  BottomCenter = "bottom-center",
+}
+
 export type ToastStatus =
   | Status
   | "default"
@@ -14,22 +23,34 @@ export type ToastStatus =
   | "info"
   | "danger";
 
+export type ToastPosition =
+  | Position
+  | "top-start"
+  | "top-end"
+  | "top-center"
+  | "bottom-start"
+  | "bottom-end"
+  | "bottom-center";
+
 export type Toast = {
   status?: ToastStatus;
   title: string;
   message: string;
   timeout?: number | 3;
-  multiple?: boolean | true;
+  multiple?: boolean;
+  position?: ToastPosition;
 };
 
+let count: number = 0;
 export const useToast = () => {
-  let count: number = 0;
   const add = (toast: Toast): void => {
     ++count;
     const toastMain = document.querySelector<HTMLElement>(".toast-main");
     const documentBody = document.querySelector<HTMLElement>("body");
     const timeout: number = toast.timeout ?? 5;
     const toastId: string = `targetToast${count}`;
+    const multiple: boolean = toast.multiple ?? true;
+    const position = toast.position ?? "top-end";
 
     let toastAlertClass: string = toast.status ?? "default";
 
@@ -67,11 +88,14 @@ export const useToast = () => {
       if (documentBody) {
         documentBody.insertAdjacentHTML(
           "beforeend",
-          `<div class="toast-main theme-default">${alertHtmlTags}</div>`
+          `<div class="toast-main toast-${position} theme-default">${alertHtmlTags}</div>`
         );
       }
     } else {
-      if (!toast.multiple) {
+      if (!multiple) {
+        if (!toastMain.classList.contains(`toast-${position}`)) {
+          toastMain.classList.add(`toast-${position}`);
+        }
         toastMain.innerHTML = alertHtmlTags;
       } else {
         toastMain.insertAdjacentHTML("beforeend", alertHtmlTags);
