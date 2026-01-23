@@ -1,6 +1,6 @@
 {
   "name": "hiinformer",
-  "version": "1.0.2-beta",
+  "version": "1.0.2",
   "description": "Easy-to-use, non-intrusive toast notifications for your application.",
   "main": "dist/index.cjs",
   "module": "dist/index.mjs",
