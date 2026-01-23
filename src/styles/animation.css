@@ -6,6 +6,7 @@
   animation: fadeOutDownToast 0.3s ease-in-out forwards;
 }
 
+
 .fade-out-up {
   animation: fadeOutUpToast 0.4s ease-in-out forwards;
 }
