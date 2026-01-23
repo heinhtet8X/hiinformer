@@ -61,11 +61,31 @@
 
 @keyframes bumpUp {
   from {
-    /* top: 5px; */
     transform: translateY(30px);
   }
   to {
-    /* top: 0px; */
     transform: translateY(0px);
+  }
+}
+
+@keyframes fadeUpIn {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeUpOut {
+  from {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  to {
+    opacity: 0;
+    transform: translateY(30px);
   }
 }
