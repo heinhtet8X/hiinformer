@@ -11,13 +11,13 @@ The toast module provides an easy way to display temporary notification messages
 ### Via npm Package
 
 ```typescript
-import { useToast } from 'hiinformer';
+import { useToast } from "hiinformer";
 
 const { add } = useToast();
 
 add({
-  title: 'Success',
-  message: 'Your changes have been saved.',
+  title: "Success",
+  message: "Your changes have been saved.",
 });
 ```
 
@@ -28,47 +28,47 @@ Include the library in your HTML:
 ```html
 <!DOCTYPE html>
 <html>
-<head>
-  <link rel="stylesheet" href="path/to/dist/styles/main.css">
-</head>
-<body>
-  <script src="path/to/dist/index.global.js"></script>
-  <script>
-    const { useToast } = window.notify;
-    const { add } = useToast();
-    
-    add({
-      title: 'Success',
-      message: 'Your changes have been saved.',
-    });
-  </script>
-</body>
+  <head>
+    <link rel="stylesheet" href="path/to/dist/styles/main.css" />
+  </head>
+  <body>
+    <script src="path/to/dist/index.global.js"></script>
+    <script>
+      const { useToast } = window.notify;
+      const { add } = useToast();
+
+      add({
+        title: "Success",
+        message: "Your changes have been saved.",
+      });
+    </script>
+  </body>
 </html>
 ```
 
 ### CommonJS
 
 ```javascript
-const { useToast } = require('hiinformer');
+const { useToast } = require("hiinformer");
 
 const { add } = useToast();
 
 add({
-  title: 'Success',
-  message: 'Your changes have been saved.',
+  title: "Success",
+  message: "Your changes have been saved.",
 });
 ```
 
 ### ES Modules
 
 ```javascript
-import { useToast } from 'hiinformer';
+import { useToast } from "hiinformer";
 
 const { add } = useToast();
 
 add({
-  title: 'Success',
-  message: 'Your changes have been saved.',
+  title: "Success",
+  message: "Your changes have been saved.",
 });
 ```
 
@@ -105,14 +105,14 @@ type Toast = {
 
 #### Properties
 
-| Property | Type | Default | Description |
-|----------|------|---------|-------------|
-| `status` | `ToastStatus` | `"default"` | Visual status type of the toast |
-| `title` | `string` | *required* | The title/heading of the toast |
-| `message` | `string` | *required* | The main message content of the toast |
-| `timeout` | `number` | `5` | Duration in seconds before auto-close (0 = never auto-close) |
-| `multiple` | `boolean` | `true` | Allow multiple toasts or replace existing ones |
-| `position` | `ToastPosition` | `"top-end"` | Position where the toast appears on screen |
+| Property   | Type            | Default     | Description                                                  |
+| ---------- | --------------- | ----------- | ------------------------------------------------------------ |
+| `status`   | `ToastStatus`   | `"default"` | Visual status type of the toast                              |
+| `title`    | `string`        | _required_  | The title/heading of the toast                               |
+| `message`  | `string`        | _required_  | The main message content of the toast                        |
+| `timeout`  | `number`        | `5`         | Duration in seconds before auto-close (0 = never auto-close) |
+| `multiple` | `boolean`       | `true`      | Allow multiple toasts or replace existing ones               |
+| `position` | `ToastPosition` | `"top-end"` | Position where the toast appears on screen                   |
 
 ---
 
@@ -132,13 +132,13 @@ enum Status {
 
 #### Status Values
 
-| Status | Use Case | Icon |
-|--------|----------|------|
-| `"default"` | Generic/neutral messages | Bell icon |
-| `"success"` | Successful operations | Checkmark icon |
-| `"warning"` | Warning messages | Alert triangle icon |
-| `"info"` | Informational messages | Info circle icon |
-| `"danger"` | Error or critical messages | Error icon |
+| Status      | Use Case                   | Icon                |
+| ----------- | -------------------------- | ------------------- |
+| `"default"` | Generic/neutral messages   | Bell icon           |
+| `"success"` | Successful operations      | Checkmark icon      |
+| `"warning"` | Warning messages           | Alert triangle icon |
+| `"info"`    | Informational messages     | Info circle icon    |
+| `"danger"`  | Error or critical messages | Error icon          |
 
 ---
 
@@ -159,14 +159,14 @@ enum Position {
 
 #### Position Values
 
-| Position | Location |
-|----------|----------|
-| `"top-start"` | Top-left corner |
-| `"top-end"` | Top-right corner (default) |
-| `"top-center"` | Top center |
-| `"bottom-start"` | Bottom-left corner |
-| `"bottom-end"` | Bottom-right corner |
-| `"bottom-center"` | Bottom center |
+| Position          | Location                   |
+| ----------------- | -------------------------- |
+| `"top-start"`     | Top-left corner            |
+| `"top-end"`       | Top-right corner (default) |
+| `"top-center"`    | Top center                 |
+| `"bottom-start"`  | Bottom-left corner         |
+| `"bottom-end"`    | Bottom-right corner        |
+| `"bottom-center"` | Bottom center              |
 
 ---
 
@@ -178,11 +178,11 @@ enum Position {
 const { add } = useToast();
 
 add({
-  status: 'success',
-  title: 'Success',
-  message: 'Operation completed successfully!',
+  status: "success",
+  title: "Success",
+  message: "Operation completed successfully!",
   timeout: 3,
-  position: 'top-end',
+  position: "top-end",
 });
 ```
 
@@ -190,11 +190,11 @@ add({
 
 ```typescript
 add({
-  status: 'danger',
-  title: 'Error',
-  message: 'Something went wrong. Please try again.',
+  status: "danger",
+  title: "Error",
+  message: "Something went wrong. Please try again.",
   timeout: 0, // Never auto-close
-  position: 'top-center',
+  position: "top-center",
 });
 ```
 
@@ -202,11 +202,11 @@ add({
 
 ```typescript
 add({
-  status: 'info',
-  title: 'Information',
-  message: 'Please note this important update.',
+  status: "info",
+  title: "Information",
+  message: "Please note this important update.",
   timeout: 5,
-  position: 'bottom-start',
+  position: "bottom-start",
 });
 ```
 
@@ -214,9 +214,9 @@ add({
 
 ```typescript
 add({
-  status: 'warning',
-  title: 'Warning',
-  message: 'This action cannot be undone.',
+  status: "warning",
+  title: "Warning",
+  message: "This action cannot be undone.",
   timeout: 4,
   multiple: false, // Replace previous toast
 });
@@ -238,13 +238,13 @@ Users can manually close a toast by clicking the close button (×) in the top-ri
 
 By default, multiple toasts can be displayed simultaneously (`multiple: true`). Set to `false` to replace the previous toast.
 
-### Animations
+<!-- ### Animations
 
 Toasts feature smooth animations:
 - **Fade In Down**: Toast enters from top with fade effect
-- **Fade Out**: Toast exits with fade-out animation  
+- **Fade Out**: Toast exits with fade-out animation
 - **Fade Up**: New animations available for fade-up entry effect
-- **Bump Up**: Remaining toasts shift up when one is removed
+- **Bump Up**: Remaining toasts shift up when one is removed -->
 
 ---
 
@@ -254,13 +254,17 @@ Toasts can be customized through CSS variables:
 
 ```css
 :root {
+  --h-primary-color: #000000;
   --h-success-color: #00dc63;
   --h-warning-color: #f5a442;
   --h-danger-color: #ed3232;
+  --h-info-color: #329fed;
+  --h-toast-container-color: #ffffff;
 }
 ```
 
 The toast system automatically applies theme classes based on the status:
+
 - `.toast-default`
 - `.toast-success`
 - `.toast-warning`
