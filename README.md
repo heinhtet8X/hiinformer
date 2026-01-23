@@ -163,3 +163,18 @@ use({
   reject: () => console.log("Rejected"),
 });
 ```
+
+
+## API Reference
+
+### Toast Notifications
+
+For detailed API reference and examples for toast notifications, visit:
+
+📖 **[Toast Documentation](https://github.com/heinhtet8X/hiinformer/tree/main/src/core/toast)**
+
+### Confirm Dialogs
+
+For detailed API reference and examples for confirm dialogs, visit:
+
+📖 **[Confirm Documentation](https://github.com/heinhtet8X/hiinformer/tree/main/src/core/confirm)**
