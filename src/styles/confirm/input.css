@@ -1,0 +1,130 @@
+@import "../theme.css";
+@import "../animation.css";
+
+body.hide-scrollable {
+  overflow-y: hidden;
+}
+
+.dialog {
+  background-color: var(--h-backdrop-color);
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  inset: 0;
+  font-family: Arial, Helvetica, sans-serif;
+  line-height: 1.5em;
+  z-index: 99999;
+}
+
+.dialog.show {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.dialog.dialog-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-flow: column;
+}
+
+.dialog > .dialog-box {
+  background-color: white;
+  min-width: var(--h-dialog-box-width);
+  margin: auto;
+  border-radius: 15px;
+  box-shadow: 0px 0px 3px var(--h-backdrop-color);
+  overflow: hidden;
+}
+
+.dialog > .dialog-box > .dialog-header {
+  font-size: 20px;
+  font-weight: 600;
+  padding: 20px;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.dialog > .dialog-box > .dialog-footer {
+  padding: 0px 20px 20px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: end;
+  gap: 5px;
+}
+
+.dialog > .dialog-box > .dialog-footer > .dialog-btn {
+  height: 35px;
+  padding: 0px 20px;
+  font-size: 14px;
+  cursor: pointer;
+  outline: none;
+  border: none;
+  box-shadow: none;
+  border-radius: var(--btn-confirm-radius);
+  transition: all 0.2s ease-in;
+}
+
+.dialog > .dialog-box > .dialog-footer > .dialog-btn-close {
+  background-color: var(--h-gray-color);
+  color: black;
+}
+
+.dialog > .dialog-box > .dialog-footer > .dialog-btn-close.primary,
+.dialog > .dialog-box > .dialog-footer > .dialog-btn-confirm.primary {
+  background-color: var(--h-primary-color);
+  color: white;
+}
+
+.dialog > .dialog-box > .dialog-footer > .dialog-btn-close.success,
+.dialog > .dialog-box > .dialog-footer > .dialog-btn-confirm.success {
+  background-color: var(--h-success-color);
+  color: white;
+}
+
+.dialog > .dialog-box > .dialog-footer > .dialog-btn-close.warning,
+.dialog > .dialog-box > .dialog-footer > .dialog-btn-confirm.warning {
+  background-color: var(--h-warning-color);
+  color: white;
+}
+
+.dialog > .dialog-box > .dialog-footer > .dialog-btn-close.danger,
+.dialog > .dialog-box > .dialog-footer > .dialog-btn-confirm.danger {
+  background-color: var(--h-danger-color);
+  color: white;
+}
+
+.dialog > .dialog-box > .dialog-footer > .dialog-btn-close:hover {
+  filter: brightness(0.95);
+  color: black;
+}
+
+.dialog > .dialog-box > .dialog-footer > .dialog-btn-confirm {
+  background-color: var(--h-success-color);
+  color: white;
+}
+
+.dialog > .dialog-box > .dialog-footer > .dialog-btn-confirm:hover {
+  filter: brightness(0.95);
+}
+
+.dialog > .dialog-box > .dialog-body {
+  max-height: 400px;
+  overflow-y: scroll;
+  padding: 0px 20px 20px 20px;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 1.5em;
+  color: gray;
+}
+
+.dialog > .dialog-box > .dialog-body > .dialog-status-icon {
+  text-align: center;
+}
+
+.dialog > .dialog-box > .dialog-body > .dialog-status-icon > svg {
+  width: 80px;
+  height: 80px;
+  color: var(--h-success-color);
+}

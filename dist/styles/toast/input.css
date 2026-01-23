@@ -1,5 +1,5 @@
-@import "./theme.css";
-@import "./animation.css";
+@import "../theme.css";
+@import "../animation.css";
 
 .toast-main {
   position: fixed;

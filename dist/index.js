@@ -40,8 +40,10 @@ var __async = (__this, __arguments, generator) => {
 // src/index.ts
 var index_exports = {};
 __export(index_exports, {
+  BtnColor: () => BtnColor,
   Position: () => Position,
   Status: () => Status,
+  useConfirm: () => useConfirm,
   useToast: () => useToast
 });
 module.exports = __toCommonJS(index_exports);
@@ -186,9 +188,118 @@ var useToast = () => {
     add
   };
 };
+
+// src/core/confirm/confirm.ts
+var BtnColor = /* @__PURE__ */ ((BtnColor2) => {
+  BtnColor2["PRIMARY"] = "primary";
+  BtnColor2["SUCCESS"] = "success";
+  BtnColor2["DANGER"] = "danger";
+  BtnColor2["WARNING"] = "warning";
+  return BtnColor2;
+})(BtnColor || {});
+var useConfirm = () => {
+  const use = (confirm) => {
+    var _a, _b, _c, _d, _e, _f;
+    const { option, accept, reject } = confirm;
+    const {
+      header,
+      message,
+      closeBtn,
+      acceptBtn,
+      bodyHTML,
+      closeMaskHide = true,
+      closeBgScroll = true
+    } = option;
+    const isShowCloseBtn = (_a = closeBtn == null ? void 0 : closeBtn.show) != null ? _a : true;
+    const isShowAcceptBtn = (_b = acceptBtn == null ? void 0 : acceptBtn.show) != null ? _b : true;
+    const confirmMain = document.querySelector(".confirm-main");
+    const documentBody = document.querySelector("body");
+    const alertHtmlTags = `<div class="dialog dialog-container">
+            <div class="dialog-box">
+                <div class="dialog-header">
+                    ${header != null ? header : ""}
+                </div>
+
+                <div class="dialog-body">
+                    ${bodyHTML ? bodyHTML : message}
+                </div>
+                <div class="dialog-footer">
+                    ${isShowCloseBtn ? `<button type="button" class="dialog-btn dialog-btn-close ${(_c = closeBtn == null ? void 0 : closeBtn.color) != null ? _c : ""}">
+                        ${(_d = closeBtn == null ? void 0 : closeBtn.label) != null ? _d : "Cancel"}
+                    </button>` : ""}
+
+                    ${isShowAcceptBtn ? `<button type="button" class="dialog-btn dialog-btn-confirm ${(_e = acceptBtn == null ? void 0 : acceptBtn.color) != null ? _e : ""}">
+                        ${(_f = acceptBtn == null ? void 0 : acceptBtn.label) != null ? _f : "Okay"}
+                    </button>` : ""}
+                </div>
+            </div>
+        </div> `;
+    if (!confirmMain) {
+      if (documentBody) {
+        documentBody.insertAdjacentHTML(
+          "beforeend",
+          `<div class="confirm-main">${alertHtmlTags}</div>`
+        );
+      }
+    } else {
+      confirmMain.innerHTML = alertHtmlTags;
+    }
+    if (closeBgScroll) {
+      if (documentBody) {
+        documentBody.classList.add("hide-scrollable");
+      }
+    }
+    const cancelBtn = document.querySelector(".dialog-btn-close");
+    const confirmBtn = document.querySelector(".dialog-btn-confirm");
+    const onAccept = () => __async(null, null, function* () {
+      accept();
+      closeConfirmBox();
+    });
+    const onReject = () => __async(null, null, function* () {
+      reject();
+      closeConfirmBox();
+    });
+    const closeConfirmBox = () => __async(null, null, function* () {
+      const confirmMainElement = document.querySelector(".confirm-main");
+      if (confirmMainElement) {
+        const dialogElement = confirmMainElement.querySelector(".dialog-box");
+        if (dialogElement) {
+          dialogElement.classList.add("fade-out");
+        }
+        setTimeout(() => {
+          confirmMainElement.innerHTML = "";
+        }, 200);
+      }
+      if (documentBody) {
+        documentBody.classList.remove("hide-scrollable");
+      }
+    });
+    if (confirmBtn) {
+      confirmBtn.addEventListener("click", onAccept);
+    }
+    if (cancelBtn) {
+      cancelBtn.addEventListener("click", onReject);
+    }
+    if (closeMaskHide) {
+      const dialogContainer = document.querySelector(".dialog-container");
+      if (dialogContainer) {
+        dialogContainer.addEventListener("click", (event) => {
+          if (event.target === dialogContainer) {
+            onReject();
+          }
+        });
+      }
+    }
+  };
+  return {
+    use
+  };
+};
 // Annotate the CommonJS export names for ESM import in node:
 0 && (module.exports = {
+  BtnColor,
   Position,
   Status,
+  useConfirm,
   useToast
 });

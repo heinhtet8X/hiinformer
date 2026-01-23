@@ -18,4 +18,10 @@
 
   /* Index */
   --main-z-index: 9999;
+
+  --h-backdrop-color: rgba(121, 121, 121, 0.24);
+  --h-backdrop-blur: 1px;
+  --h-dialog-box-width: 400px;
+
+  --btn-confirm-radius: 10px;
 }

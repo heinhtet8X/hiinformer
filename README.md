@@ -71,21 +71,3 @@ add({
   message: "Your changes have been saved.",
 });
 ```
-
-## API Reference
-
-### `useToast()`
-
-Returns an object containing toast management functions.
-
-```typescript
-const { add } = useToast();
-```
-
-#### Returns
-
-- `add(toast: Toast)`: Adds a new toast notification to the display
-
----
-
-### Toast Configuration

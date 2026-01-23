@@ -27,4 +27,33 @@ declare const useToast: () => {
     add: (toast: Toast) => void;
 };
 
-export { Position, Status, type Toast, type ToastPosition, type ToastStatus, useToast };
+declare enum BtnColor {
+    PRIMARY = "primary",
+    SUCCESS = "success",
+    DANGER = "danger",
+    WARNING = "warning"
+}
+type Btn = {
+    show?: boolean;
+    label?: string;
+    className?: string;
+    readonly color?: BtnColor;
+};
+type Confirm = {
+    option: {
+        message: string;
+        header: string;
+        closeBtn?: Btn;
+        acceptBtn?: Btn;
+        bodyHTML?: string;
+        closeMaskHide?: boolean;
+        closeBgScroll?: boolean;
+    };
+    accept: () => void;
+    reject: () => void;
+};
+declare const useConfirm: () => {
+    use: (confirm: Confirm) => void;
+};
+
+export { type Btn, BtnColor, type Confirm, Position, Status, type Toast, type ToastPosition, type ToastStatus, useConfirm, useToast };
