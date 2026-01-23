@@ -1,5 +1,5 @@
-@import "./theme.css";
-@import "./animation.css";
+@import "../theme.css";
+@import "../animation.css";
 
 .toast-main {
   position: fixed;
@@ -7,17 +7,44 @@
   flex-flow: column wrap;
   gap: 20px;
   min-width: 400px;
-  right: 0px;
-  top: 0px;
   z-index: var(--main-z-index);
   padding: 10px;
+}
+
+.toast-main.toast-top-start {
+  left: 0px;
+  top: 0px;
+}
+
+.toast-main.toast-top-end {
+  right: 0px;
+  top: 0px;
+}
+
+.toast-main.toast-top-center {
+  top: 0;
+  right: 33%;
+}
+
+.toast-main.toast-bottom-start {
+  left: 0px;
+  bottom: 0px;
+}
+
+.toast-main.toast-bottom-end {
+  right: 0px;
+  bottom: 0px;
+}
+
+.toast-main.toast-bottom-center {
+  bottom: 0;
+  right: 33%;
 }
 
 .toast {
   min-width: 400px;
   font-family: var(--h-font-family);
   overflow: hidden;
-  /* animation: fadeOutUp 0.3s ease-in-out forwards; */
 }
 
 .toast.toast-container {

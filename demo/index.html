@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <link rel="stylesheet" href="../dist/styles/main.css">
+
+</head>
+
+<body>
+    <button onclick="handleSuccess()">Toast Notification</button>
+    <button onclick="handleFadeConfirm()">Confirm with Fade Animation</button>
+
+
+    <script src="../dist/index.global.js"></script>
+    <script>
+        const handleSuccess = () => {
+            const toast = notify.useToast();
+            toast.add({
+                title: "Hello World",
+                message: "Hi I am Hein Htet Aung",
+                position: "bottom-center",
+                timeout: 3,
+            });
+        }
+
+        // Example: Using the new fade-in/fade-out confirm dialog
+        const handleFadeConfirm = () => {
+            const confirm = notify.useConfirm();
+            confirm.use({
+                option: {
+                    header: 'Hello World I am Hein',
+                    message: "Are you sure you want to delete this item?",
+                    // bodyHTML: "<p><s>This action cannot be undone.</s   trong></p>",
+                    closeBtn: {
+                        show: true,
+                        label: "Cancel",
+                    },
+                    acceptBtn: {
+                        show: true,
+                        label: "Delete",
+                        color: 'primary'
+                    },
+                },
+                accept: () => {
+                    console.log("✅ Confirmed - Item deleted");
+                    alert("Item deleted successfully!");
+                },
+                reject: () => {
+                    console.log("❌ Cancelled - Operation aborted");
+                }
+            });
+        };
+
+    </script>
+</body>
+
+</html>
