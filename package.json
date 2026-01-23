@@ -13,7 +13,7 @@
   "scripts": {
     "build": "tsup src/index.ts --format esm,cjs,iife --globalName notify --dts && cpy 'src/**/*.css' dist",
     "publish-package": "npm publish --access public",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"No tests\""
   },
   "files": [
     "dist"
