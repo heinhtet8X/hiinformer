@@ -1,0 +1,122 @@
+.toast {
+  animation: fadeInDownToast 0.3s ease-in-out;
+}
+
+.fade-out {
+  animation: fadeOutDownToast 0.3s ease-in-out forwards;
+}
+
+
+.fade-out-up {
+  animation: fadeOutUpToast 0.4s ease-in-out forwards;
+}
+
+.bump-up {
+  transform: translateY(0px);
+  animation: bumpUpToast 0.3s ease;
+}
+
+@keyframes fadeTopUpToast {
+  from {
+    opacity: 0;
+    transform: translateY(-40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeInDownToast {
+  from {
+    opacity: 0;
+    transform: translateY(-15px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeOutDownToast {
+  from {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  to {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+}
+
+@keyframes fadeOutUpToast {
+  from {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  to {
+    opacity: 0;
+    transform: translateY(-30px);
+  }
+}
+
+@keyframes bumpUpToast {
+  from {
+    transform: translateY(30px);
+  }
+  to {
+    transform: translateY(0px);
+  }
+}
+
+@keyframes fadeUpInToast {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeUpOutToast {
+  from {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  to {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+}
+
+@keyframes fadeInConfirm {
+  from {
+    opacity: 0;
+    transform: translateY(-10px) scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: translate(0px) scale(1);
+  }
+}
+
+@keyframes fadeOutConfirm {
+  from {
+    opacity: 1;
+    transform: translate(0px) scale(1);
+  }
+  to {
+    opacity: 0;
+    transform: translateY(-10px) scale(0.7);
+  }
+}
+
+.dialog.dialog-container .dialog-box {
+  animation: fadeInConfirm 0.2s ease-in-out;
+}
+
+.dialog.dialog-container .dialog-box.fade-out {
+  animation: fadeOutConfirm 0.2s ease-in-out forwards;
+}

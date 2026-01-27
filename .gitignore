@@ -4,7 +4,7 @@
 /pnpm-lock.yaml
 
 # Compiled/Build Artifacts
-/dist
+# /dist
 /build
 /out
 /es
