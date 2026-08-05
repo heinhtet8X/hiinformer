@@ -4,57 +4,765 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>hiinformer v2.0 - Glass UI Demo</title>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Note: hiinformer auto-injects all styles automatically! No external CSS link required. -->
 
-    <link rel="stylesheet" href="../dist/styles/main.css">
+    <style>
+        :root {
+            --bg-gradient: linear-gradient(135deg, #0f172a 0%, #1e1b4b 50%, #0f172a 100%);
+            --card-bg: rgba(255, 255, 255, 0.07);
+            --card-border: rgba(255, 255, 255, 0.12);
+            --text-main: #f8fafc;
+            --text-muted: #94a3b8;
+        }
 
+        body.light-mode {
+            --bg-gradient: linear-gradient(135deg, #f1f5f9 0%, #e0e7ff 50%, #f1f5f9 100%);
+            --card-bg: rgba(255, 255, 255, 0.65);
+            --card-border: rgba(255, 255, 255, 0.8);
+            --text-main: #0f172a;
+            --text-muted: #475569;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+            background: var(--bg-gradient);
+            color: var(--text-main);
+            min-height: 100vh;
+            position: relative;
+            overflow-x: hidden;
+            transition: background 0.4s ease;
+        }
+
+        /* Ambient Animated Glowing Mesh Orbs */
+        .ambient-orb {
+            position: fixed;
+            border-radius: 50%;
+            filter: blur(90px);
+            z-index: 0;
+            pointer-events: none;
+            opacity: 0.6;
+            animation: floatOrb 20s infinite alternate ease-in-out;
+        }
+
+        .orb-1 {
+            width: 400px;
+            height: 400px;
+            background: #6366f1;
+            top: -100px;
+            left: -100px;
+        }
+
+        .orb-2 {
+            width: 500px;
+            height: 500px;
+            background: #ec4899;
+            bottom: -150px;
+            right: -100px;
+            animation-delay: -5s;
+        }
+
+        .orb-3 {
+            width: 350px;
+            height: 350px;
+            background: #06b6d4;
+            top: 40%;
+            left: 30%;
+            animation-delay: -10s;
+        }
+
+        .orb-4 {
+            width: 300px;
+            height: 300px;
+            background: #10b981;
+            top: 10%;
+            right: 15%;
+            animation-delay: -15s;
+        }
+
+        @keyframes floatOrb {
+            0% { transform: translate(0, 0) scale(1); }
+            50% { transform: translate(60px, 40px) scale(1.1); }
+            100% { transform: translate(-40px, 80px) scale(0.95); }
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 60px 24px 100px 24px;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* Header */
+        header {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 6px 16px;
+            border-radius: 30px;
+            background: rgba(99, 102, 241, 0.15);
+            border: 1px solid rgba(99, 102, 241, 0.3);
+            color: #818cf8;
+            font-size: 13px;
+            font-weight: 700;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+            margin-bottom: 16px;
+            backdrop-filter: blur(10px);
+        }
+
+        h1 {
+            font-size: 48px;
+            font-weight: 800;
+            letter-spacing: -0.02em;
+            background: linear-gradient(135deg, #ffffff 0%, #cbd5e1 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 16px;
+        }
+
+        body.light-mode h1 {
+            background: linear-gradient(135deg, #0f172a 0%, #475569 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        p.subtitle {
+            font-size: 18px;
+            color: var(--text-muted);
+            max-width: 650px;
+            margin: 0 auto 32px auto;
+            line-height: 1.6;
+        }
+
+        .theme-toggle-btn {
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            color: var(--text-main);
+            padding: 10px 20px;
+            border-radius: 12px;
+            font-family: inherit;
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+            backdrop-filter: blur(12px);
+            transition: all 0.2s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .theme-toggle-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Glass Cards Layout */
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(480px, 1fr));
+            gap: 32px;
+        }
+
+        @media (max-width: 640px) {
+            .grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .glass-card {
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            backdrop-filter: blur(20px) saturate(180%);
+            -webkit-backdrop-filter: blur(20px) saturate(180%);
+            border-radius: 24px;
+            padding: 32px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+            transition: transform 0.3s ease, border-color 0.3s ease;
+        }
+
+        .glass-card:hover {
+            border-color: rgba(255, 255, 255, 0.25);
+        }
+
+        .card-header {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 24px;
+        }
+
+        .card-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: 12px;
+            background: linear-gradient(135deg, #6366f1, #4f46e5);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #fff;
+            box-shadow: 0 4px 14px rgba(99, 102, 241, 0.4);
+        }
+
+        .card-title {
+            font-size: 20px;
+            font-weight: 700;
+        }
+
+        .section-label {
+            font-size: 13px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            color: var(--text-muted);
+            margin-bottom: 12px;
+        }
+
+        /* Controls */
+        .btn-group {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-bottom: 24px;
+        }
+
+        .demo-btn {
+            font-family: inherit;
+            font-size: 14px;
+            font-weight: 600;
+            padding: 10px 18px;
+            border-radius: 12px;
+            border: 1px solid transparent;
+            cursor: pointer;
+            transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .demo-btn:hover {
+            transform: translateY(-2px);
+        }
+
+        .demo-btn:active {
+            transform: translateY(0);
+        }
+
+        /* Status Buttons */
+        .btn-default { background: linear-gradient(135deg, #6366f1, #4f46e5); color: #fff; box-shadow: 0 4px 14px rgba(99, 102, 241, 0.3); }
+        .btn-success { background: linear-gradient(135deg, #10b981, #059669); color: #fff; box-shadow: 0 4px 14px rgba(16, 185, 129, 0.3); }
+        .btn-info    { background: linear-gradient(135deg, #06b6d4, #0891b2); color: #fff; box-shadow: 0 4px 14px rgba(6, 182, 212, 0.3); }
+        .btn-warning { background: linear-gradient(135deg, #f59e0b, #d97706); color: #fff; box-shadow: 0 4px 14px rgba(245, 158, 11, 0.3); }
+        .btn-danger  { background: linear-gradient(135deg, #ef4444, #dc2626); color: #fff; box-shadow: 0 4px 14px rgba(239, 68, 68, 0.3); }
+        .btn-ghost   { background: rgba(255, 255, 255, 0.1); border: 1px solid rgba(255, 255, 255, 0.2); color: var(--text-main); }
+        body.light-mode .btn-ghost { background: rgba(0, 0, 0, 0.05); border: 1px solid rgba(0, 0, 0, 0.1); color: var(--text-main); }
+
+        /* Form Inputs */
+        .input-group {
+            margin-bottom: 20px;
+        }
+
+        .input-group label {
+            display: block;
+            font-size: 13px;
+            font-weight: 600;
+            color: var(--text-muted);
+            margin-bottom: 6px;
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 12px 16px;
+            border-radius: 12px;
+            background: rgba(255, 255, 255, 0.08);
+            border: 1px solid var(--card-border);
+            color: var(--text-main);
+            font-family: inherit;
+            font-size: 14px;
+            outline: none;
+            transition: all 0.2s ease;
+        }
+
+        body.light-mode .form-control {
+            background: rgba(255, 255, 255, 0.8);
+            border-color: rgba(203, 213, 225, 0.8);
+        }
+
+        .form-control:focus {
+            border-color: #6366f1;
+            box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.25);
+        }
+
+        .select-control {
+            appearance: none;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%2394a3b8' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+            background-repeat: no-repeat;
+            background-position: right 14px center;
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            margin-top: 60px;
+            font-size: 14px;
+            color: var(--text-muted);
+        }
+    </style>
 </head>
 
 <body>
-    <button onclick="handleSuccess()">Toast Notification</button>
-    <button onclick="handleFadeConfirm()">Confirm with Fade Animation</button>
+    <!-- Ambient Glass Blur Mesh Orbs -->
+    <div class="ambient-orb orb-1"></div>
+    <div class="ambient-orb orb-2"></div>
+    <div class="ambient-orb orb-3"></div>
+    <div class="ambient-orb orb-4"></div>
+
+    <div class="container">
+        <!-- Header -->
+        <header>
+            <div class="badge">✨ hiinformer v2.0</div>
+            <h1>Glass UI Design System</h1>
+            <p class="subtitle">Experience modern, ultra-sleek glassmorphic toast notifications and confirm dialogs built for state-of-the-art web applications.</p>
+            
+            <button class="theme-toggle-btn" onclick="toggleTheme()">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="12" cy="12" r="5"></circle>
+                    <line x1="12" y1="1" x2="12" y2="3"></line>
+                    <line x1="12" y1="21" x2="12" y2="23"></line>
+                    <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                    <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                    <line x1="1" y1="12" x2="3" y2="12"></line>
+                    <line x1="21" y1="12" x2="23" y2="12"></line>
+                    <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                    <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                </svg>
+                Toggle Dark / Light Theme
+            </button>
+        </header>
+
+        <!-- Main Demo Grid -->
+        <div class="grid">
+            <!-- Toast Showcase Card -->
+            <div class="glass-card">
+                <div class="card-header">
+                    <div class="card-icon">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"></path><path d="M13.73 21a2 2 0 0 1-3.46 0"></path></svg>
+                    </div>
+                    <div class="card-title">Glass Toast Notifications</div>
+                </div>
+
+                <div class="section-label">1. Quick Status Triggers</div>
+                <div class="btn-group">
+                    <button class="demo-btn btn-default" onclick="showToast('default')">Default</button>
+                    <button class="demo-btn btn-success" onclick="showToast('success')">Success</button>
+                    <button class="demo-btn btn-info" onclick="showToast('info')">Info</button>
+                    <button class="demo-btn btn-warning" onclick="showToast('warning')">Warning</button>
+                    <button class="demo-btn btn-danger" onclick="showToast('danger')">Danger</button>
+                </div>
+
+                <div class="section-label">2. Position & Stacking</div>
+                <div class="input-group">
+                    <label for="toastPosition">Toast Position</label>
+                    <select id="toastPosition" class="form-control select-control">
+                        <option value="top-end" selected>Top End (Right)</option>
+                        <option value="top-center">Top Center</option>
+                        <option value="top-start">Top Start (Left)</option>
+                        <option value="bottom-end">Bottom End (Right)</option>
+                        <option value="bottom-center">Bottom Center</option>
+                        <option value="bottom-start">Bottom Start (Left)</option>
+                    </select>
+                </div>
+
+                <div class="section-label">3. Custom Notification Builder</div>
+                <div class="input-group">
+                    <label for="toastTitle">Title</label>
+                    <input type="text" id="toastTitle" class="form-control" value="Glass UI Activated">
+                </div>
+                <div class="input-group">
+                    <label for="toastMessage">Message</label>
+                    <input type="text" id="toastMessage" class="form-control" value="Translucent backdrop blur with glowing status accents.">
+                </div>
+
+                <div class="btn-group" style="margin-bottom: 0;">
+                    <button class="demo-btn btn-ghost" onclick="triggerCustomToast()">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
+                        Trigger Custom Toast
+                    </button>
+                    <button class="demo-btn btn-ghost" onclick="triggerAllToasts()">
+                        ⚡ Stack All 5 Statuses
+                    </button>
+                </div>
+            </div>
+
+            <!-- Confirm Dialog Showcase Card -->
+            <div class="glass-card">
+                <div class="card-header">
+                    <div class="card-icon" style="background: linear-gradient(135deg, #10b981, #059669); box-shadow: 0 4px 14px rgba(16, 185, 129, 0.4);">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
+                    </div>
+                    <div class="card-title">Glass Confirm Dialogs</div>
+                </div>
+
+                <div class="section-label">1. Confirm Color Variants</div>
+                <div class="btn-group">
+                    <button class="demo-btn btn-default" onclick="showConfirm('primary')">Primary</button>
+                    <button class="demo-btn btn-success" onclick="showConfirm('success')">Success</button>
+                    <button class="demo-btn btn-warning" onclick="showConfirm('warning')">Warning</button>
+                    <button class="demo-btn btn-danger" onclick="showConfirm('danger')">Danger</button>
+                </div>
+
+                <div class="section-label">2. Custom Modal Builder</div>
+                <div class="input-group">
+                    <label for="confirmHeader">Modal Header</label>
+                    <input type="text" id="confirmHeader" class="form-control" value="Confirm Action">
+                </div>
+                <div class="input-group">
+                    <label for="confirmMessage">Modal Body Message</label>
+                    <textarea id="confirmMessage" class="form-control" rows="3">Are you sure you want to perform this operation? This action is non-reversible with glassmorphic backdrop overlay.</textarea>
+                </div>
+
+                <div class="btn-group" style="margin-bottom: 0;">
+                    <button class="demo-btn btn-ghost" onclick="triggerCustomConfirm()">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="8" x2="12" y2="12"></line><line x1="12" y1="16" x2="12.01" y2="16"></line></svg>
+                        Test Glass Confirm Modal
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- HTML Setup & Code Snippets Showcase Card -->
+        <div class="glass-card" style="margin-top: 32px; grid-column: 1 / -1;">
+            <div class="card-header">
+                <div class="card-icon" style="background: linear-gradient(135deg, #06b6d4, #0891b2); box-shadow: 0 4px 14px rgba(6, 182, 212, 0.4);">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"></polyline><polyline points="8 6 2 12 8 18"></polyline></svg>
+                </div>
+                <div class="card-title">HTML Quick Setup & Integration Guide</div>
+            </div>
+
+            <p style="color: var(--text-muted); margin-bottom: 20px; font-size: 14.5px; line-height: 1.6;">
+                <strong>hiinformer</strong> is a single, zero-setup library. Styles are automatically injected on-demand into your document. No external <code>&lt;link rel="stylesheet"&gt;</code> is required!
+            </p>
+
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(440px, 1fr)); gap: 24px;">
+                <!-- 1. Browser HTML CDN Setup -->
+                <div>
+                    <div class="section-label">1. Browser HTML Script Tag (Zero Config)</div>
+                    <pre style="background: rgba(15, 23, 42, 0.85); border: 1px solid var(--card-border); border-radius: 14px; padding: 18px; font-family: monospace; font-size: 13px; color: #e2e8f0; overflow-x: auto; line-height: 1.55;"><code>&lt;!-- Add script tag before &lt;/body&gt; --&gt;
+&lt;script src="path/to/dist/index.global.js"&gt;&lt;/script&gt;
+
+&lt;script&gt;
+  const { useToast, useConfirm } = notify;
+
+  // 1. Toast Notification
+  useToast().add({
+    status: 'success',
+    title: 'Success!',
+    message: 'Styles auto-injected in HTML.',
+    position: 'top-end',
+    timeout: 3
+  });
+
+  // 2. Confirm Dialog
+  useConfirm().use({
+    option: {
+      header: 'Confirm Delete',
+      message: 'Are you sure you want to delete?',
+      acceptBtn: { label: 'Delete', color: 'danger' }
+    },
+    accept: () => console.log('Deleted!'),
+    reject: () => console.log('Cancelled')
+  });
+&lt;/script&gt;</code></pre>
+                </div>
+
+                <!-- 2. Full HTML Page Boilerplate -->
+                <div>
+                    <div class="section-label">2. Complete HTML Page Boilerplate</div>
+                    <pre style="background: rgba(15, 23, 42, 0.85); border: 1px solid var(--card-border); border-radius: 14px; padding: 18px; font-family: monospace; font-size: 13px; color: #e2e8f0; overflow-x: auto; line-height: 1.55;"><code>&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+&lt;head&gt;
+    &lt;meta charset="UTF-8"&gt;
+    &lt;title&gt;My Application&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;button id="notifyBtn"&gt;Show Toast&lt;/button&gt;
+
+    &lt;!-- hiinformer script --&gt;
+    &lt;script src="path/to/dist/index.global.js"&gt;&lt;/script&gt;
+    &lt;script&gt;
+      document.getElementById('notifyBtn').addEventListener('click', () =&gt; {
+        notify.useToast().add({
+          title: 'Hello World',
+          message: 'Glass UI Toast Notification',
+          status: 'info'
+        });
+      });
+    &lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+                </div>
+            </div>
+        </div>
+
+        <!-- CSS Theme Color Guidelines Showcase Card -->
+        <div class="glass-card" style="margin-top: 32px; grid-column: 1 / -1;">
+            <div class="card-header">
+                <div class="card-icon" style="background: linear-gradient(135deg, #a855f7, #7c3aed); box-shadow: 0 4px 14px rgba(168, 85, 247, 0.4);">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><path d="M12 2a7 7 0 1 0 10 10"></path></svg>
+                </div>
+                <div class="card-title">CSS Theme & Color Customization Guidelines</div>
+            </div>
+
+            <p style="color: var(--text-muted); margin-bottom: 20px; font-size: 14.5px; line-height: 1.6;">
+                You can easily customize all status colors, glass container fill, backdrop blurs, and corner radius by overriding <strong>CSS Custom Properties (Variables)</strong> in your CSS file or <code>&lt;style&gt;</code> block!
+            </p>
+
+            <!-- Preset Theme Buttons -->
+            <div class="section-label">Live Theme Presets (Test Live Color Changes)</div>
+            <div class="btn-group" style="margin-bottom: 24px;">
+                <button class="demo-btn btn-ghost" onclick="applyPresetTheme('default')">✨ Default Indigo</button>
+                <button class="demo-btn btn-ghost" style="border-color: rgba(168, 85, 247, 0.5);" onclick="applyPresetTheme('cyberpunk')">🔮 Cyberpunk Violet</button>
+                <button class="demo-btn btn-ghost" style="border-color: rgba(16, 185, 129, 0.5);" onclick="applyPresetTheme('emerald')">🌿 Emerald Mint</button>
+                <button class="demo-btn btn-ghost" style="border-color: rgba(245, 158, 11, 0.5);" onclick="applyPresetTheme('sunset')">🌅 Sunset Amber</button>
+            </div>
+
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(440px, 1fr)); gap: 24px;">
+                <!-- 1. CSS Variable Overrides -->
+                <div>
+                    <div class="section-label">1. How to Override CSS Variables in HTML or CSS</div>
+                    <pre style="background: rgba(15, 23, 42, 0.85); border: 1px solid var(--card-border); border-radius: 14px; padding: 18px; font-family: monospace; font-size: 13px; color: #e2e8f0; overflow-x: auto; line-height: 1.55;"><code>/* Add to your stylesheet or &lt;style&gt; block */
+:root {
+  /* Brand Status Colors */
+  --h-primary-color: #8b5cf6;
+  --h-primary-glow: rgba(139, 92, 246, 0.35);
+  
+  --h-success-color: #10b981;
+  --h-warning-color: #f59e0b;
+  --h-danger-color: #ef4444;
+  --h-info-color: #06b6d4;
+
+  /* Glass Fill & Backdrop Blur */
+  --h-toast-container-color: rgba(255, 255, 255, 0.75);
+  --h-glass-blur: blur(16px) saturate(180%);
+  --h-backdrop-color: rgba(15, 23, 42, 0.25);
+  --h-backdrop-blur: blur(4px);
+
+  /* Corner Radius & Dimensions */
+  --h-border-radius: 16px;
+  --h-dialog-box-width: 440px;
+}</code></pre>
+                </div>
+
+                <!-- 2. CSS Variables Reference Table -->
+                <div>
+                    <div class="section-label">2. CSS Variables Reference List</div>
+                    <div style="background: rgba(15, 23, 42, 0.85); border: 1px solid var(--card-border); border-radius: 14px; padding: 18px; font-size: 13px; color: #cbd5e1; line-height: 1.6;">
+                        <ul style="list-style: none; display: flex; flex-direction: column; gap: 10px;">
+                            <li><code style="color: #a855f7;">--h-primary-color</code>: Primary accent & default toast color</li>
+                            <li><code style="color: #10b981;">--h-success-color</code>: Success notification & accept button color</li>
+                            <li><code style="color: #f59e0b;">--h-warning-color</code>: Warning notification status color</li>
+                            <li><code style="color: #ef4444;">--h-danger-color</code>: Danger notification & confirm action color</li>
+                            <li><code style="color: #06b6d4;">--h-info-color</code>: Info notification status color</li>
+                            <li><code style="color: #38bdf8;">--h-toast-container-color</code>: Glass card fill background color</li>
+                            <li><code style="color: #38bdf8;">--h-glass-blur</code>: Toast backdrop blur filter</li>
+                            <li><code style="color: #38bdf8;">--h-backdrop-blur</code>: Confirm modal backdrop overlay blur</li>
+                            <li><code style="color: #38bdf8;">--h-border-radius</code>: Glass card corner radius (default: 16px)</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <footer>
+            <p>Designed with Glassmorphism for <strong>hiinformer</strong> • 2026</p>
+        </footer>
 
 
+    </div>
+
+    <!-- Script imports -->
     <script src="../dist/index.global.js"></script>
     <script>
-        const handleSuccess = () => {
+        // Toggle Dark/Light Mode
+        function toggleTheme() {
+            document.body.classList.toggle('light-mode');
+        }
+
+        // Quick Toast Trigger
+        function showToast(status) {
             const toast = notify.useToast();
+            const position = document.getElementById('toastPosition').value;
+
+            const presets = {
+                default: { title: "Default Notification", message: "Everything is running smoothly under default status." },
+                success: { title: "Changes Saved!", message: "Your Glass UI settings have been applied successfully." },
+                info: { title: "New Version 2.0", message: "Glassmorphism styling is active across all status components." },
+                warning: { title: "Low Disk Space", message: "Your storage volume is reaching 90% capacity limit." },
+                danger: { title: "Connection Error", message: "Failed to sync changes to remote server." }
+            };
+
+            const preset = presets[status] || presets.default;
+
             toast.add({
-                title: "Hello World",
-                message: "Hi I am Hein Htet Aung",
-                position: "bottom-center",
-                timeout: 3,
+                status: status,
+                title: preset.title,
+                message: preset.message,
+                position: position,
+                timeout: 4
             });
         }
 
-        // Example: Using the new fade-in/fade-out confirm dialog
-        const handleFadeConfirm = () => {
+        // Custom Toast Trigger
+        function triggerCustomToast() {
+            const toast = notify.useToast();
+            const title = document.getElementById('toastTitle').value || 'Custom Toast';
+            const message = document.getElementById('toastMessage').value || 'Glass UI notification details.';
+            const position = document.getElementById('toastPosition').value;
+
+            toast.add({
+                status: 'default',
+                title: title,
+                message: message,
+                position: position,
+                timeout: 4
+            });
+        }
+
+        // Stack All 5 Statuses
+        function triggerAllToasts() {
+            const toast = notify.useToast();
+            const position = document.getElementById('toastPosition').value;
+            const statuses = ['default', 'success', 'info', 'warning', 'danger'];
+
+            statuses.forEach((st, idx) => {
+                setTimeout(() => {
+                    showToast(st);
+                }, idx * 220);
+            });
+        }
+
+        // Confirm Dialog Trigger
+        function showConfirm(color) {
             const confirm = notify.useConfirm();
+
             confirm.use({
                 option: {
-                    header: 'Hello World I am Hein',
-                    message: "Are you sure you want to delete this item?",
-                    // bodyHTML: "<p><s>This action cannot be undone.</s   trong></p>",
+                    header: color.charAt(0).toUpperCase() + color.slice(1) + ' Confirmation',
+                    message: `Would you like to proceed with the ${color} status operation?`,
                     closeBtn: {
                         show: true,
-                        label: "Cancel",
+                        label: "Cancel"
                     },
                     acceptBtn: {
                         show: true,
-                        label: "Delete",
-                        color: 'primary'
-                    },
+                        label: "Confirm",
+                        color: color
+                    }
                 },
                 accept: () => {
-                    console.log("✅ Confirmed - Item deleted");
-                    alert("Item deleted successfully!");
+                    const toast = notify.useToast();
+                    toast.add({
+                        status: 'success',
+                        title: 'Action Accepted',
+                        message: `Confirmed with ${color} status button.`,
+                        position: document.getElementById('toastPosition').value,
+                        timeout: 3
+                    });
                 },
                 reject: () => {
-                    console.log("❌ Cancelled - Operation aborted");
+                    const toast = notify.useToast();
+                    toast.add({
+                        status: 'info',
+                        title: 'Action Cancelled',
+                        message: 'Confirm dialog was dismissed.',
+                        position: document.getElementById('toastPosition').value,
+                        timeout: 3
+                    });
                 }
             });
-        };
+        }
 
+        // Custom Confirm Trigger
+        function triggerCustomConfirm() {
+            const confirm = notify.useConfirm();
+            const header = document.getElementById('confirmHeader').value || 'Confirm';
+            const message = document.getElementById('confirmMessage').value || 'Are you sure?';
+
+            confirm.use({
+                option: {
+                    header: header,
+                    message: message,
+                    closeBtn: { show: true, label: "Cancel" },
+                    acceptBtn: { show: true, label: "Proceed", color: 'primary' }
+                },
+                accept: () => {
+                    const toast = notify.useToast();
+                    toast.add({
+                        status: 'success',
+                        title: 'Confirmed!',
+                        message: 'You clicked Proceed.',
+                        position: 'top-end',
+                        timeout: 3
+                    });
+                },
+                reject: () => {
+                    console.log("Cancelled custom confirm modal");
+                }
+            });
+        }
+
+        // Apply Preset Theme Overrides
+        function applyPresetTheme(preset) {
+            const root = document.documentElement;
+            
+            if (preset === 'cyberpunk') {
+                root.style.setProperty('--h-primary-color', '#a855f7');
+                root.style.setProperty('--h-primary-glow', 'rgba(168, 85, 247, 0.4)');
+                root.style.setProperty('--h-success-color', '#06b6d4');
+                root.style.setProperty('--h-success-glow', 'rgba(6, 182, 212, 0.4)');
+            } else if (preset === 'emerald') {
+                root.style.setProperty('--h-primary-color', '#10b981');
+                root.style.setProperty('--h-primary-glow', 'rgba(16, 185, 129, 0.4)');
+                root.style.setProperty('--h-success-color', '#059669');
+                root.style.setProperty('--h-success-glow', 'rgba(5, 150, 105, 0.4)');
+            } else if (preset === 'sunset') {
+                root.style.setProperty('--h-primary-color', '#f59e0b');
+                root.style.setProperty('--h-primary-glow', 'rgba(245, 158, 11, 0.4)');
+                root.style.setProperty('--h-success-color', '#f97316');
+                root.style.setProperty('--h-success-glow', 'rgba(249, 115, 22, 0.4)');
+            } else {
+                root.style.removeProperty('--h-primary-color');
+                root.style.removeProperty('--h-primary-glow');
+                root.style.removeProperty('--h-success-color');
+                root.style.removeProperty('--h-success-glow');
+            }
+
+            notify.useToast().add({
+                status: 'default',
+                title: 'Theme Applied!',
+                message: `Activated ${preset} CSS color preset.`,
+                position: document.getElementById('toastPosition').value,
+                timeout: 3
+            });
+        }
     </script>
 </body>
 

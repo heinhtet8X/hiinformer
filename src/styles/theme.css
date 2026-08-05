@@ -1,27 +1,39 @@
 :root {
-  --h-primary-color: #000000;
-  --h-success-color: #00dc63;
-  --h-warning-color: #f5a442;
-  --h-danger-color: #ed3232;
-  --h-info-color: #329fed;
-  --h-toast-container-color: #ffffff;
+  /* Brand & Status Colors */
+  --h-primary-color: #6366f1;
+  --h-primary-glow: rgba(99, 102, 241, 0.35);
+  
+  --h-success-color: #10b981;
+  --h-success-glow: rgba(16, 185, 129, 0.35);
+  
+  --h-warning-color: #f59e0b;
+  --h-warning-glow: rgba(245, 158, 11, 0.35);
+  
+  --h-danger-color: #ef4444;
+  --h-danger-glow: rgba(239, 68, 68, 0.35);
+  
+  --h-info-color: #06b6d4;
+  --h-info-glow: rgba(6, 182, 212, 0.35);
+  
+  /* Glass UI Fill & Backdrop */
+  --h-toast-container-color: rgba(255, 255, 255, 0.72);
+  --h-glass-border-color: rgba(255, 255, 255, 0.6);
+  --h-glass-blur: blur(16px) saturate(180%);
+  --h-glass-shadow: 0 10px 30px -5px rgba(0, 0, 0, 0.1), 0 0 20px -5px rgba(255, 255, 255, 0.5) inset;
+  
+  /* Modal Glass Backdrop */
+  --h-backdrop-color: rgba(15, 23, 42, 0.25);
+  --h-backdrop-blur: blur(4px);
+  --h-dialog-box-width: 440px;
 
-  /* Border Radius */
-  --h-border-radius: 10px;
-  --h-border-width: 1.5px;
+  /* Typography & Layout */
+  --h-font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  --h-border-radius: 16px;
+  --h-border-width: 1px;
+  --h-toast-padding: 16px 20px;
+  --btn-confirm-radius: 12px;
 
-  /* Padding */
-  --h-toast-padding: 15px;
-
-  /* Font */
-  --h-font-family: Arial, Helvetica, sans-serif;
-
-  /* Index */
-  --main-z-index: 9999;
-
-  --h-backdrop-color: rgba(121, 121, 121, 0.24);
-  --h-backdrop-blur: 1px;
-  --h-dialog-box-width: 400px;
-
-  --btn-confirm-radius: 10px;
+  /* Z-Index */
+  --main-z-index: 99999;
 }
+

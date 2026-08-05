@@ -1,3 +1,5 @@
+import { injectStyles } from "../../styles/injector";
+
 export enum BtnColor {
   PRIMARY = "primary",
   SUCCESS = "success",
@@ -27,6 +29,7 @@ export type Confirm = {
 };
 
 export const useConfirm = () => {
+  injectStyles();
   const use = (confirm: Confirm): void => {
     const { option, accept, reject } = confirm;
 

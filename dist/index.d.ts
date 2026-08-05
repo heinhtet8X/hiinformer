@@ -1,6 +1,7 @@
 declare enum Status {
     Default = "default",
     Success = "success",
+    Warning = "warning",
     Warnig = "warning",
     Info = "info",
     Danger = "danger"

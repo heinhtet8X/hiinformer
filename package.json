@@ -1,13 +1,21 @@
 {
   "name": "hiinformer",
-  "version": "2.0.2",
-  "description": "Easy-to-use, non-intrusive toast notifications for your application.",
-  "main": "dist/index.cjs",
+  "version": "2.1.0",
+  "description": "Ultra-sleek Glass UI toast notifications and confirm dialogs in a zero-config single package.",
+  "main": "dist/index.js",
   "module": "dist/index.mjs",
   "types": "dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.mjs",
+      "require": "./dist/index.js"
+    },
+    "./styles/*": "./dist/styles/*"
+  },
   "sideEffects": [
     "**/*.css",
-    "dist/index.cjs",
+    "dist/index.js",
     "dist/index.mjs"
   ],
   "scripts": {
