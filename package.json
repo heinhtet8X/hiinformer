@@ -19,7 +19,7 @@
     "dist/index.mjs"
   ],
   "scripts": {
-    "build": "tsup src/index.ts --format esm,cjs,iife --globalName notify --dts && cpy 'src/**/*.css' dist",
+    "build": "tsup src/index.ts --format esm,cjs,iife --globalName notify --dts && cpy 'src/**/*.css' dist && cpy 'dist/index.global.js' demo",
     "publish-package": "npm publish --access public",
     "test": "echo \"No tests\""
   },

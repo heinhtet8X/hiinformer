@@ -3,15 +3,16 @@
 
 <head>
     <meta charset="UTF-8">
-    
+
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>hiinformer v2.0 - Glass UI Demo</title>
-    
+
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-    
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet">
+
     <!-- Note: hiinformer auto-injects all styles automatically! No external CSS link required. -->
 
     <style>
@@ -94,9 +95,17 @@
         }
 
         @keyframes floatOrb {
-            0% { transform: translate(0, 0) scale(1); }
-            50% { transform: translate(60px, 40px) scale(1.1); }
-            100% { transform: translate(-40px, 80px) scale(0.95); }
+            0% {
+                transform: translate(0, 0) scale(1);
+            }
+
+            50% {
+                transform: translate(60px, 40px) scale(1.1);
+            }
+
+            100% {
+                transform: translate(-40px, 80px) scale(0.95);
+            }
         }
 
         .container {
@@ -268,13 +277,47 @@
         }
 
         /* Status Buttons */
-        .btn-default { background: linear-gradient(135deg, #6366f1, #4f46e5); color: #fff; box-shadow: 0 4px 14px rgba(99, 102, 241, 0.3); }
-        .btn-success { background: linear-gradient(135deg, #10b981, #059669); color: #fff; box-shadow: 0 4px 14px rgba(16, 185, 129, 0.3); }
-        .btn-info    { background: linear-gradient(135deg, #06b6d4, #0891b2); color: #fff; box-shadow: 0 4px 14px rgba(6, 182, 212, 0.3); }
-        .btn-warning { background: linear-gradient(135deg, #f59e0b, #d97706); color: #fff; box-shadow: 0 4px 14px rgba(245, 158, 11, 0.3); }
-        .btn-danger  { background: linear-gradient(135deg, #ef4444, #dc2626); color: #fff; box-shadow: 0 4px 14px rgba(239, 68, 68, 0.3); }
-        .btn-ghost   { background: rgba(255, 255, 255, 0.1); border: 1px solid rgba(255, 255, 255, 0.2); color: var(--text-main); }
-        body.light-mode .btn-ghost { background: rgba(0, 0, 0, 0.05); border: 1px solid rgba(0, 0, 0, 0.1); color: var(--text-main); }
+        .btn-default {
+            background: linear-gradient(135deg, #6366f1, #4f46e5);
+            color: #fff;
+            box-shadow: 0 4px 14px rgba(99, 102, 241, 0.3);
+        }
+
+        .btn-success {
+            background: linear-gradient(135deg, #10b981, #059669);
+            color: #fff;
+            box-shadow: 0 4px 14px rgba(16, 185, 129, 0.3);
+        }
+
+        .btn-info {
+            background: linear-gradient(135deg, #06b6d4, #0891b2);
+            color: #fff;
+            box-shadow: 0 4px 14px rgba(6, 182, 212, 0.3);
+        }
+
+        .btn-warning {
+            background: linear-gradient(135deg, #f59e0b, #d97706);
+            color: #fff;
+            box-shadow: 0 4px 14px rgba(245, 158, 11, 0.3);
+        }
+
+        .btn-danger {
+            background: linear-gradient(135deg, #ef4444, #dc2626);
+            color: #fff;
+            box-shadow: 0 4px 14px rgba(239, 68, 68, 0.3);
+        }
+
+        .btn-ghost {
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            color: var(--text-main);
+        }
+
+        body.light-mode .btn-ghost {
+            background: rgba(0, 0, 0, 0.05);
+            border: 1px solid rgba(0, 0, 0, 0.1);
+            color: var(--text-main);
+        }
 
         /* Form Inputs */
         .input-group {
@@ -341,10 +384,12 @@
         <header>
             <div class="badge">✨ hiinformer v3.0</div>
             <h1>Glass UI Design System</h1>
-            <p class="subtitle">Experience modern, ultra-sleek glassmorphic toast notifications and confirm dialogs built for state-of-the-art web applications.</p>
-            
+            <p class="subtitle">Experience modern, ultra-sleek glassmorphic toast notifications and confirm dialogs
+                built for state-of-the-art web applications.</p>
+
             <button class="theme-toggle-btn" onclick="toggleTheme()">
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                    stroke-linecap="round" stroke-linejoin="round">
                     <circle cx="12" cy="12" r="5"></circle>
                     <line x1="12" y1="1" x2="12" y2="3"></line>
                     <line x1="12" y1="21" x2="12" y2="23"></line>
@@ -365,7 +410,11 @@
             <div class="glass-card">
                 <div class="card-header">
                     <div class="card-icon">
-                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"></path><path d="M13.73 21a2 2 0 0 1-3.46 0"></path></svg>
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"></path>
+                            <path d="M13.73 21a2 2 0 0 1-3.46 0"></path>
+                        </svg>
                     </div>
                     <div class="card-title">Glass Toast Notifications</div>
                 </div>
@@ -399,12 +448,17 @@
                 </div>
                 <div class="input-group">
                     <label for="toastMessage">Message</label>
-                    <input type="text" id="toastMessage" class="form-control" value="Translucent backdrop blur with glowing status accents.">
+                    <input type="text" id="toastMessage" class="form-control"
+                        value="Translucent backdrop blur with glowing status accents.">
                 </div>
 
                 <div class="btn-group" style="margin-bottom: 0;">
                     <button class="demo-btn btn-ghost" onclick="triggerCustomToast()">
-                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2">
+                            <line x1="12" y1="5" x2="12" y2="19"></line>
+                            <line x1="5" y1="12" x2="19" y2="12"></line>
+                        </svg>
                         Trigger Custom Toast
                     </button>
                     <button class="demo-btn btn-ghost" onclick="triggerAllToasts()">
@@ -416,8 +470,13 @@
             <!-- Confirm Dialog Showcase Card -->
             <div class="glass-card">
                 <div class="card-header">
-                    <div class="card-icon" style="background: linear-gradient(135deg, #10b981, #059669); box-shadow: 0 4px 14px rgba(16, 185, 129, 0.4);">
-                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
+                    <div class="card-icon"
+                        style="background: linear-gradient(135deg, #10b981, #059669); box-shadow: 0 4px 14px rgba(16, 185, 129, 0.4);">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+                            <polyline points="22 4 12 14.01 9 11.01"></polyline>
+                        </svg>
                     </div>
                     <div class="card-title">Glass Confirm Dialogs</div>
                 </div>
@@ -437,12 +496,18 @@
                 </div>
                 <div class="input-group">
                     <label for="confirmMessage">Modal Body Message</label>
-                    <textarea id="confirmMessage" class="form-control" rows="3">Are you sure you want to perform this operation? This action is non-reversible with glassmorphic backdrop overlay.</textarea>
+                    <textarea id="confirmMessage" class="form-control"
+                        rows="3">Are you sure you want to perform this operation? This action is non-reversible with glassmorphic backdrop overlay.</textarea>
                 </div>
 
                 <div class="btn-group" style="margin-bottom: 0;">
                     <button class="demo-btn btn-ghost" onclick="triggerCustomConfirm()">
-                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="8" x2="12" y2="12"></line><line x1="12" y1="16" x2="12.01" y2="16"></line></svg>
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2">
+                            <circle cx="12" cy="12" r="10"></circle>
+                            <line x1="12" y1="8" x2="12" y2="12"></line>
+                            <line x1="12" y1="16" x2="12.01" y2="16"></line>
+                        </svg>
                         Test Glass Confirm Modal
                     </button>
                 </div>
@@ -452,21 +517,28 @@
         <!-- HTML Setup & Code Snippets Showcase Card -->
         <div class="glass-card" style="margin-top: 32px; grid-column: 1 / -1;">
             <div class="card-header">
-                <div class="card-icon" style="background: linear-gradient(135deg, #06b6d4, #0891b2); box-shadow: 0 4px 14px rgba(6, 182, 212, 0.4);">
-                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"></polyline><polyline points="8 6 2 12 8 18"></polyline></svg>
+                <div class="card-icon"
+                    style="background: linear-gradient(135deg, #06b6d4, #0891b2); box-shadow: 0 4px 14px rgba(6, 182, 212, 0.4);">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                        stroke-linecap="round" stroke-linejoin="round">
+                        <polyline points="16 18 22 12 16 6"></polyline>
+                        <polyline points="8 6 2 12 8 18"></polyline>
+                    </svg>
                 </div>
                 <div class="card-title">HTML Quick Setup & Integration Guide</div>
             </div>
 
             <p style="color: var(--text-muted); margin-bottom: 20px; font-size: 14.5px; line-height: 1.6;">
-                <strong>hiinformer</strong> is a single, zero-setup library. Styles are automatically injected on-demand into your document. No external <code>&lt;link rel="stylesheet"&gt;</code> is required!
+                <strong>hiinformer</strong> is a single, zero-setup library. Styles are automatically injected on-demand
+                into your document. No external <code>&lt;link rel="stylesheet"&gt;</code> is required!
             </p>
 
             <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(440px, 1fr)); gap: 24px;">
                 <!-- 1. Browser HTML CDN Setup -->
                 <div>
                     <div class="section-label">1. Browser HTML Script Tag (Zero Config)</div>
-                    <pre style="background: rgba(15, 23, 42, 0.85); border: 1px solid var(--card-border); border-radius: 14px; padding: 18px; font-family: monospace; font-size: 13px; color: #e2e8f0; overflow-x: auto; line-height: 1.55;"><code>&lt;!-- Add script tag before &lt;/body&gt; --&gt;
+                    <pre
+                        style="background: rgba(15, 23, 42, 0.85); border: 1px solid var(--card-border); border-radius: 14px; padding: 18px; font-family: monospace; font-size: 13px; color: #e2e8f0; overflow-x: auto; line-height: 1.55;"><code>&lt;!-- Add script tag before &lt;/body&gt; --&gt;
 &lt;script src="path/to/dist/index.global.js"&gt;&lt;/script&gt;
 
 &lt;script&gt;
@@ -497,7 +569,8 @@
                 <!-- 2. Full HTML Page Boilerplate -->
                 <div>
                     <div class="section-label">2. Complete HTML Page Boilerplate</div>
-                    <pre style="background: rgba(15, 23, 42, 0.85); border: 1px solid var(--card-border); border-radius: 14px; padding: 18px; font-family: monospace; font-size: 13px; color: #e2e8f0; overflow-x: auto; line-height: 1.55;"><code>&lt;!DOCTYPE html&gt;
+                    <pre
+                        style="background: rgba(15, 23, 42, 0.85); border: 1px solid var(--card-border); border-radius: 14px; padding: 18px; font-family: monospace; font-size: 13px; color: #e2e8f0; overflow-x: auto; line-height: 1.55;"><code>&lt;!DOCTYPE html&gt;
 &lt;html lang="en"&gt;
 &lt;head&gt;
     &lt;meta charset="UTF-8"&gt;
@@ -526,30 +599,41 @@
         <!-- CSS Theme Color Guidelines Showcase Card -->
         <div class="glass-card" style="margin-top: 32px; grid-column: 1 / -1;">
             <div class="card-header">
-                <div class="card-icon" style="background: linear-gradient(135deg, #a855f7, #7c3aed); box-shadow: 0 4px 14px rgba(168, 85, 247, 0.4);">
-                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><path d="M12 2a7 7 0 1 0 10 10"></path></svg>
+                <div class="card-icon"
+                    style="background: linear-gradient(135deg, #a855f7, #7c3aed); box-shadow: 0 4px 14px rgba(168, 85, 247, 0.4);">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                        stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="10"></circle>
+                        <path d="M12 2a7 7 0 1 0 10 10"></path>
+                    </svg>
                 </div>
                 <div class="card-title">CSS Theme & Color Customization Guidelines</div>
             </div>
 
             <p style="color: var(--text-muted); margin-bottom: 20px; font-size: 14.5px; line-height: 1.6;">
-                You can easily customize all status colors, glass container fill, backdrop blurs, and corner radius by overriding <strong>CSS Custom Properties (Variables)</strong> in your CSS file or <code>&lt;style&gt;</code> block!
+                You can easily customize all status colors, glass container fill, backdrop blurs, and corner radius by
+                overriding <strong>CSS Custom Properties (Variables)</strong> in your CSS file or
+                <code>&lt;style&gt;</code> block!
             </p>
 
             <!-- Preset Theme Buttons -->
             <div class="section-label">Live Theme Presets (Test Live Color Changes)</div>
             <div class="btn-group" style="margin-bottom: 24px;">
                 <button class="demo-btn btn-ghost" onclick="applyPresetTheme('default')">✨ Default Indigo</button>
-                <button class="demo-btn btn-ghost" style="border-color: rgba(168, 85, 247, 0.5);" onclick="applyPresetTheme('cyberpunk')">🔮 Cyberpunk Violet</button>
-                <button class="demo-btn btn-ghost" style="border-color: rgba(16, 185, 129, 0.5);" onclick="applyPresetTheme('emerald')">🌿 Emerald Mint</button>
-                <button class="demo-btn btn-ghost" style="border-color: rgba(245, 158, 11, 0.5);" onclick="applyPresetTheme('sunset')">🌅 Sunset Amber</button>
+                <button class="demo-btn btn-ghost" style="border-color: rgba(168, 85, 247, 0.5);"
+                    onclick="applyPresetTheme('cyberpunk')">🔮 Cyberpunk Violet</button>
+                <button class="demo-btn btn-ghost" style="border-color: rgba(16, 185, 129, 0.5);"
+                    onclick="applyPresetTheme('emerald')">🌿 Emerald Mint</button>
+                <button class="demo-btn btn-ghost" style="border-color: rgba(245, 158, 11, 0.5);"
+                    onclick="applyPresetTheme('sunset')">🌅 Sunset Amber</button>
             </div>
 
             <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(440px, 1fr)); gap: 24px;">
                 <!-- 1. CSS Variable Overrides -->
                 <div>
                     <div class="section-label">1. How to Override CSS Variables in HTML or CSS</div>
-                    <pre style="background: rgba(15, 23, 42, 0.85); border: 1px solid var(--card-border); border-radius: 14px; padding: 18px; font-family: monospace; font-size: 13px; color: #e2e8f0; overflow-x: auto; line-height: 1.55;"><code>/* Add to your stylesheet or &lt;style&gt; block */
+                    <pre
+                        style="background: rgba(15, 23, 42, 0.85); border: 1px solid var(--card-border); border-radius: 14px; padding: 18px; font-family: monospace; font-size: 13px; color: #e2e8f0; overflow-x: auto; line-height: 1.55;"><code>/* Add to your stylesheet or &lt;style&gt; block */
 :root {
   /* Brand Status Colors */
   --h-primary-color: #8b5cf6;
@@ -575,17 +659,25 @@
                 <!-- 2. CSS Variables Reference Table -->
                 <div>
                     <div class="section-label">2. CSS Variables Reference List</div>
-                    <div style="background: rgba(15, 23, 42, 0.85); border: 1px solid var(--card-border); border-radius: 14px; padding: 18px; font-size: 13px; color: #cbd5e1; line-height: 1.6;">
+                    <div
+                        style="background: rgba(15, 23, 42, 0.85); border: 1px solid var(--card-border); border-radius: 14px; padding: 18px; font-size: 13px; color: #cbd5e1; line-height: 1.6;">
                         <ul style="list-style: none; display: flex; flex-direction: column; gap: 10px;">
-                            <li><code style="color: #a855f7;">--h-primary-color</code>: Primary accent & default toast color</li>
-                            <li><code style="color: #10b981;">--h-success-color</code>: Success notification & accept button color</li>
-                            <li><code style="color: #f59e0b;">--h-warning-color</code>: Warning notification status color</li>
-                            <li><code style="color: #ef4444;">--h-danger-color</code>: Danger notification & confirm action color</li>
+                            <li><code style="color: #a855f7;">--h-primary-color</code>: Primary accent & default toast
+                                color</li>
+                            <li><code style="color: #10b981;">--h-success-color</code>: Success notification & accept
+                                button color</li>
+                            <li><code style="color: #f59e0b;">--h-warning-color</code>: Warning notification status
+                                color</li>
+                            <li><code style="color: #ef4444;">--h-danger-color</code>: Danger notification & confirm
+                                action color</li>
                             <li><code style="color: #06b6d4;">--h-info-color</code>: Info notification status color</li>
-                            <li><code style="color: #38bdf8;">--h-toast-container-color</code>: Glass card fill background color</li>
+                            <li><code style="color: #38bdf8;">--h-toast-container-color</code>: Glass card fill
+                                background color</li>
                             <li><code style="color: #38bdf8;">--h-glass-blur</code>: Toast backdrop blur filter</li>
-                            <li><code style="color: #38bdf8;">--h-backdrop-blur</code>: Confirm modal backdrop overlay blur</li>
-                            <li><code style="color: #38bdf8;">--h-border-radius</code>: Glass card corner radius (default: 16px)</li>
+                            <li><code style="color: #38bdf8;">--h-backdrop-blur</code>: Confirm modal backdrop overlay
+                                blur</li>
+                            <li><code style="color: #38bdf8;">--h-border-radius</code>: Glass card corner radius
+                                (default: 16px)</li>
                         </ul>
                     </div>
                 </div>
@@ -599,8 +691,8 @@
 
     </div>
 
-    <!-- Script imports -->
-    <script src="../dist/index.global.js"></script>
+    <!-- Script imports with automatic fallback resolution -->
+    <script src="index.global.js" onerror="if(!window.notify){var s=document.createElement('script');s.src='../dist/index.global.js';s.onerror=function(){var c=document.createElement('script');c.src='https://cdn.jsdelivr.net/npm/hiinformer@latest/dist/index.global.js';document.head.appendChild(c);};document.head.appendChild(s);}"></script>
     <script>
         // Toggle Dark/Light Mode
         function toggleTheme() {
@@ -733,7 +825,7 @@
         // Apply Preset Theme Overrides
         function applyPresetTheme(preset) {
             const root = document.documentElement;
-            
+
             if (preset === 'cyberpunk') {
                 root.style.setProperty('--h-primary-color', '#a855f7');
                 root.style.setProperty('--h-primary-glow', 'rgba(168, 85, 247, 0.4)');
