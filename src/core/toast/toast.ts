@@ -62,20 +62,19 @@ export const useToast = () => {
     const icon = swithIcon(toast.status);
 
     const alertHtmlTags: string = `<div id="${toastId}" class="toast toast-${toastAlertClass} toast-container">
-                <div class="toast-body">
-                  <div class="toast-img-overlay">
-                    ${icon}
-                  </div>
-                  <div class="toast-content">
+                <div class="toast-header">
+                  <div class="toast-title-group">
+                    <span class="toast-icon-badge">${icon}</span>
                     <h6 class="toast-content-title">${toast.title}</h6>
-                    <p class="toast-content-message">
-                      ${toast.message}
-                    </p>
                   </div>
-
                   <button class="toast-close-btn" data-target-id="${toastId}" aria-label="Close notification">
                     <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
                   </button>
+                </div>
+                <div class="toast-body">
+                  <p class="toast-content-message">
+                    ${toast.message}
+                  </p>
                 </div>
               </div>`;
 
@@ -147,7 +146,7 @@ export const useToast = () => {
     switch (status) {
       case "success":
         icon =
-          '<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>';
+          '<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path><path d="m9 12 2 2 4-4"></path></svg>';
         break;
 
       case "info":
@@ -167,7 +166,7 @@ export const useToast = () => {
 
       default:
         icon =
-          '<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"></path><path d="M13.73 21a2 2 0 0 1-3.46 0"></path></svg>';
+          '<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path><path d="m9 12 2 2 4-4"></path></svg>';
         break;
     }
 

@@ -1,6 +1,6 @@
 {
   "name": "hiinformer",
-  "version": "3.0.1",
+  "version": "3.0.2",
   "description": "Ultra-sleek Glass UI toast notifications and confirm dialogs in a zero-config single package.",
   "main": "dist/index.js",
   "module": "dist/index.mjs",
